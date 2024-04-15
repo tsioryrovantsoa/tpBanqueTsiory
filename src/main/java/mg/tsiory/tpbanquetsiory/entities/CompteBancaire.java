@@ -4,10 +4,14 @@
  */
 package mg.tsiory.tpbanquetsiory.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.Table;
 import java.io.Serializable;
 
 /**
@@ -15,6 +19,9 @@ import java.io.Serializable;
  * @author tsiory
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "CompteBancaire.findAll", query = "SELECT c FROM CompteBancaire c")
+})
 public class CompteBancaire implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -22,8 +29,10 @@ public class CompteBancaire implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "NOM")
     private String nom;
 
+    @Column(name = "SOLDE")
     private int solde;
 
     public String getNom() {

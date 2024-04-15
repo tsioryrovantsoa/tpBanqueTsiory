@@ -5,6 +5,7 @@
 package mg.tsiory.tpbanquetsiory.service;
 
 import jakarta.annotation.sql.DataSourceDefinition;
+import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -31,16 +32,11 @@ import mg.tsiory.tpbanquetsiory.entities.CompteBancaire;
             "driverClass=com.mysql.cj.jdbc.Driver"
         }
 )
-@RequestScoped
+@Dependent
 public class GestionnaireCompte {
 
     @PersistenceContext(unitName = "banquePU")
     private EntityManager em;
-
-    @Transactional
-    public void persist(CompteBancaire c) {
-        em.persist(c);
-    }
 
     @Transactional
     public void creerCompte(CompteBancaire c) {
@@ -48,7 +44,12 @@ public class GestionnaireCompte {
     }
 
     public List<CompteBancaire> getAllComptes() {
-       Query query = em.createNamedQuery("CompteBancaire.findAll");
-       return query.getResultList();
+        Query query = em.createNamedQuery("CompteBancaire.findAll");
+        return query.getResultList();
+    }
+
+    public Long nbComptes() {
+        Query query = em.createQuery("SELECT count(c) FROM CompteBancaire c");
+        return (long) query.getSingleResult();
     }
 }
