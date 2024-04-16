@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 import mg.tsiory.tpbanquetsiory.entities.CompteBancaire;
 import mg.tsiory.tpbanquetsiory.service.GestionnaireCompte;
+import mg.tsiory.tpbanquetsiory.util.Util;
 
 /**
  *
@@ -36,6 +37,12 @@ public class ListeComptes implements Serializable {
             allCompteBancaires = gestionnaireCompte.getAllComptes();
         }
         return allCompteBancaires;
+    }
+
+    public String supprimerCompte(CompteBancaire compteBancaire) {
+        gestionnaireCompte.supprimerCompte(compteBancaire);
+        Util.addFlashInfoMessage("Compte de " + compteBancaire.getNom() + " supprimé");
+        return "listeComptes?faces-redirect=true";
     }
 
 }
