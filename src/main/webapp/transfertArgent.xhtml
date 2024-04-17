@@ -16,19 +16,19 @@
                 <h:form id="form">
                     <h:panelGrid columns="3">
                         Id compte source : 
-                        <h:inputText id="source" size="3" value="#{transfertArgent.idSource}"
+                        <h:inputText id="source" value="#{transfertArgent.idSource}"
                                      required="true"
                                      requiredMessage="Source requis"/>
                         <h:message for="source"/>
 
                         Id compte destination : 
-                        <h:inputText id="destination" size="3" value="#{transfertArgent.idDestination}"
+                        <h:inputText id="destination" value="#{transfertArgent.idDestination}"
                                      required="true"
                                      requiredMessage="Destination requis"/>
                         <h:message for="destination"/>
 
                         Montant : 
-                        <h:inputText id="montant" size="3" value="#{transfertArgent.montant}"
+                        <h:inputText id="montant" value="#{transfertArgent.montant}"
                                      required="true"
                                      requiredMessage="Montant requis"/>
                         <h:message for="montant"/>

@@ -54,7 +54,7 @@ public class GestionnaireCompte {
         return (long) query.getSingleResult();
     }
 
-    @Transactional
+     @Transactional
     public void transferer(CompteBancaire source, CompteBancaire destination,
             int montant) {
         source.retirer(montant);
