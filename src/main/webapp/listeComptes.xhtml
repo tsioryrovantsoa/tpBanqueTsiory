@@ -66,6 +66,15 @@
                                 <h:graphicImage name="images/del.png"/>
                             </h:commandLink>
                         </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText escape="false" value="Historique&lt;br/>opérations"/>
+                            </f:facet>
+                            <h:link 
+                                title="Afficher les opérations sur le compte de #{compte.nom}"
+                                value="Détails"
+                                outcome="/operations?id=#{compte.id}" />
+                        </p:column>
                     </p:dataTable>
                 </h:form>
                 <h:messages/>
