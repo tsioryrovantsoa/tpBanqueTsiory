@@ -87,6 +87,10 @@ public class TransfertArgent {
             Util.messageErreur("Aucun compte avec cet idDestination!", "Aucun compte avec cet idDestination !", "form:destination");
             erreur = true;
         }
+        if (idSource == idDestination) {
+            Util.messageErreur("L'idSource et idDestination ne doivent pas être la même!", "L'idSource et idDestination ne doivent pas être la même", "form:source");
+            erreur = true;
+        }
 
         if (montant <= 0) {
             // Message d'erreur associé au composant montant ; form:montant est le montant
